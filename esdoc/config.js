@@ -38,10 +38,10 @@ module.exports = {
         typeInference: { enable: true },
         brand: {
           logo: './esdoc/images/logo.png',
-          title: 'Sequelize',
-          description: 'An easy-to-use multi SQL dialect ORM for Node.js',
-          repository: 'https://github.com/sequelize/sequelize',
-          site: 'https://sequelize.org/master/',
+          title: 'View Support for Sequelize',
+          description: 'Add Views support for sequelize orm',
+          repository: 'https://github.com/exoshtw/sequelize-view-support.git',
+          site: 'https://exoshtw.github.io/sequelize-view-support/',
         },
         manual: {
           index: './esdoc/manual/index.md',
