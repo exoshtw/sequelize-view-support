@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    "@babel/plugin-transform-runtime"
+  ],
+  "presets": [
+    ["@babel/preset-env", {
+	"targets": {
+          "node": "12.22.2"
+        }
+    }]
+  ],
+  "assumptions": {
+    "privateFieldsAsProperties": true,
+    "setPublicClassFields": true
+  }
+}

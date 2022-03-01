@@ -1,0 +1,6 @@
+docs/*
+esdoc/*
+examples/*
+hooks/*
+src/*
+tests/*
