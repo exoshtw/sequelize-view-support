@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/queryinterface.js | Sequelize</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<link rel="stylesheet" href="./inject/css/0-style.css"><link rel="stylesheet" href="./inject/css/0-theme.css"><meta name="description" content="An easy-to-use multi SQL dialect ORM for Node.js"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Sequelize"><meta property="twitter:description" content="An easy-to-use multi SQL dialect ORM for Node.js"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/sequelize/sequelize"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-decorateQueryInterface">decorateQueryInterface</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sequelizedecorator">sequelizedecorator</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/queryinterface.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">
+/**
+ * Decorator for Sequelize&apos;s query interface
+ * @param {Sequelize.QueryInterface} queryInterface
+ * @return {Sequelize.QueryInterface}
+ */
+export default function decorateQueryInterface(queryInterface) {
+
+    queryInterface.dropView = function(viewName, options = {}) {
+        let sql = `DROP VIEW IF EXISTS ` +
+                    `${this.QueryGenerator.quoteTable(viewName)}`
+        ;
+
+        if (this.sequelize.options.dialect === &apos;postgres&apos; &amp;&amp; options.cascade) {
+            sql += &apos; CASCADE&apos;;
+        }
+
+        return this.sequelize.query(sql);
+    };
+
+    queryInterface.generateQueryFromOptions = function(subQueryOptions) {
+        const {
+            qtableName,
+            qmodel,
+            fieldsMap,
+            qoptions,
+        } = subQueryOptions;
+
+        const afieldMap = Object.keys(fieldsMap || {})
+            .map((k) =&gt; [k, fieldsMap[k]])
+        ;
+
+        const query = this.QueryGenerator.selectQuery(
+            qtableName,
+            qoptions,
+            qmodel,
+        )
+            .replace(/;$/, &apos;&apos;)
+        ;
+
+        return [query, afieldMap];
+    };
+
+    /**
+     * Create view method
+     * @param {string} viewName
+     * @param {object} attributes
+     * @param {object} subQueryOptions
+     * @param {object} options
+     * @param {Model} model
+     * @return {Promise}
+     */
+    queryInterface.createView = async function(
+        viewName, attributes, subQueryOptions, options, model
+    ) {
+        const attrStr = [];
+        let sql = &apos;&apos;;
+
+        attributes = Object.keys(attributes).map((attribute) =&gt; this
+            .sequelize
+            .normalizeAttribute(attributes[attribute])
+        );
+
+        // Pick options for exclude defaults, index, etc
+        attributes = attributes.map(({
+            type, Model, fieldName, _modelAttrbute, field,
+        }) =&gt; ({type, Model, fieldName, _modelAttrbute, field}));
+
+        // Postgres requires special SQL commands for ENUM/ENUM[]
+        /*
+        if (this.sequelize.options.dialect === &apos;postgres&apos;) {
+            await PostgresQueryInterface
+                .ensureEnums(this, viewName, attributes, options, model);
+        }
+        */
+
+        attributes = this.QueryGenerator.attributesToSQL(
+            attributes, {
+                table: viewName,
+                context: &apos;createTable&apos;,
+            },
+        );
+
+        for (const attr in attributes) {
+            if (!attr.match(/^[a-z0-9]/i)) {
+                continue;
+            }
+
+            const quotedAttr = this.QueryGenerator.quoteIdentifier(attr);
+            const dataType = attributes[attr];
+            const i = attributes[attr].indexOf(&apos;COMMENT &apos;);
+
+            if (i !== -1) {
+                attributes[attr] = attributes[attr].substring(0, i);
+            }
+
+            if (this.sequelize.options.dialect === &apos;postgres&apos;) {
+                const dataType = this.QueryGenerator.dataTypeMapping(
+                    viewName,
+                    attr,
+                    attributes[attr]
+                );
+                attrStr.push(`${quotedAttr} ${dataType}`);
+            } else if (this.sequelize.options.dialect === &apos;sqlite&apos;) {
+                attrStr.push(`${quotedAttr} ${dataType}`);
+            }
+        }
+
+        let query = subQueryOptions;
+        let afieldMap = [];
+
+        if (typeof queryOptions !== &apos;string&apos;) {
+            [query, afieldMap] = this.generateQueryFromOptions(subQueryOptions);
+        }
+
+        const selattrs = Object.keys(attributes)
+            .map((field) =&gt; afieldMap.find(([f]) =&gt; f === field) || [field])
+            .map(([f, t]) =&gt; `${this.QueryGenerator.quoteIdentifier(t || f)}` +
+                (t ? ` AS ${this.QueryGenerator.quoteIdentifier(f)}` : ``)
+            )
+            .join(&apos;,&apos;)
+        ;
+
+        switch (this.sequelize.options.dialect) {
+            case &apos;sqlite&apos;:
+                sql = `CREATE VIEW IF NOT EXISTS ` +
+                    `${this.QueryGenerator.quoteTable(viewName)} AS SELECT ` +
+                    `${selattrs} FROM (${query});`
+                ;
+                break;
+            case &apos;postgres&apos;:
+                sql = `CREATE OR REPLACE VIEW ` +
+                    `${this.QueryGenerator.quoteTable(viewName)} AS SELECT ` +
+                    `${selattrs} FROM (${query}) as sq;`
+                ;
+                break;
+            default:
+                throw new Error(
+                    `View support is not compatilbe with this dialect`
+                );
+        }
+
+        return this.sequelize.query(sql, options);
+    };
+
+    return queryInterface;
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

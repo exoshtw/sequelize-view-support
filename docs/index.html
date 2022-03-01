@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="./">
+  <title data-ice="title">Manual | Sequelize</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<link rel="stylesheet" href="./inject/css/0-style.css"><link rel="stylesheet" href="./inject/css/0-theme.css"><meta name="description" content="An easy-to-use multi SQL dialect ORM for Node.js"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Sequelize"><meta property="twitter:description" content="An easy-to-use multi SQL dialect ORM for Node.js"></head>
+<body class="layout-container manual-root manual-index" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/sequelize/sequelize"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/started.html"><a href="manual/started.html" data-ice="link">Install</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#via-package-manager" data-ice="link">Via package manager</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#via-git" data-ice="link">Via Git</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#use-in-your-project" data-ice="link">Use in your project</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/basic.html"><a href="manual/basic.html" data-ice="link">Basics</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/basic.html"><a href="manual/basic.html#define-new-view" data-ice="link">Define new View</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#using-config-" data-ice="link">Using config:</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#overriding--code-getqueryoptions--code-" data-ice="link">Overriding getQueryOptions</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#using-both" data-ice="link">Using both</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/basic.html"><a href="manual/basic.html#usage" data-ice="link">Usage</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/associations.html"><a href="manual/associations.html" data-ice="link">Using with associations</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/associations.html"><a href="manual/associations.html#example-" data-ice="link">Example:</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/aggregations.html"><a href="manual/aggregations.html" data-ice="link">Using with aggregations fields</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/aggregations.html"><a href="manual/aggregations.html#example-using-count" data-ice="link">Example using count</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/aggregations.html"><a href="manual/aggregations.html#using-where-group-order-with-aggregated-fields" data-ice="link">Using where/group/order with aggregated fields</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/virtuals.html"><a href="manual/virtuals.html" data-ice="link">Using Views instead of virtual fields</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/virtuals.html"><a href="manual/virtuals.html#example" data-ice="link">Example</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/combine.html"><a href="manual/combine.html" data-ice="link">Combine concepts</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/combine.html"><a href="manual/combine.html#example" data-ice="link">Example</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/combine.html"><a href="manual/combine.html#explanation" data-ice="link">Explanation</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html" data-ice="link">Polymorphism using Views</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#stage" data-ice="link">Stage</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#propouse" data-ice="link">Propouse</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#implement" data-ice="link">Implement</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-parent-model" data-ice="link">Create parent model</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-child-abstract" data-ice="link">Create child abstract</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-child-models" data-ice="link">Create child models</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-the-abstract-view" data-ice="link">Create the abstract View</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-the-child-views" data-ice="link">Create the child views</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#usage" data-ice="link">Usage</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown">
+  <div class="manual-user-index" data-ice="manualUserIndex"><h1 id="views-support-for-sequelize">Views support for Sequelize</h1><p><div>
+  <div class="center logo">
+    <img src="manual/asset/logo.png" alt="logo">
+  </div>
+</div>
+
+</p>
+<p>Add Views support for <a href="https://sequelize.org/">Sequelize</a>.</p>
+<p>You are currently looking at the <strong>Tutorials and Guides</strong>. You might also be
+interested in the <a href="identifiers.html">API Reference</a>.</p>
+<h2 id="supported-dialects">Supported dialects</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/PostgreSQL">Postgres</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SQLite">SQLite</a></li>
+</ul>
+<h2 id="quick-example">Quick example</h2><pre><code class="lang-js"><code class="source-code prettyprint">const { Sequelize, Model, DataTypes } = require(&apos;sequelize&apos;);
+const { View, decorateSequelize } = require(&apos;@exoshtw/sequelize-views-support&apos;);
+
+const ViewsSupportedSequelize = decorateSequelize(Sequelize);
+
+const sequelize = new ViewsSupportedSequelize((&apos;sqlite::memory:&apos;));
+
+class User extends Model {};
+
+User.init({
+  username: DataTypes.STRING,
+  birthday: DataTypes.DATE,
+  enabled: {type: DataTypes.BOOLEAN, defaultValue: true},
+}, { sequelize, modelName: &apos;user&apos; });
+
+class EnabledUser extends View {}; 
+
+EnabledUser.init({
+    username: DataTypes.STRING,
+    birthday: DataTypes.DATE,
+}, {
+    sequelize,
+    modelName: &apos;enabled_user&apos;,
+    timestamps: false,
+    viewQueryOptions: {
+        model: User,
+        where: {
+            enabled: true,
+        },
+    },
+});
+
+(async () =&gt; {
+  await sequelize.sync();
+
+  const jane = await User.create({
+    username: &apos;janedoe&apos;,
+    birthday: new Date(1980, 6, 20),
+    enabled: true,
+  });
+
+  const robert = await User.create({
+    username: &apos;robert&apos;,
+    birthday: new Date(1987, 1, 25),
+    enabled: false,
+  });
+
+  const enableds = await EnabledUser.findAll();
+
+  console.log(enableds.map((user) =&gt; user.toJSON()));
+})();</code>
+</code></pre>
+<h2 id="supporting-the-project">Supporting the project</h2><p>This project is limmited to a few dialects, if you implement another dialect
+please make us a PR.</p>
+</div>
+
+  
+
+  <div class="manual-cards">
+    
+  <div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Install</h1><h2>Via package manager</h2><pre><code><code class="source-code prettyprint">$ npm install --save @exoshtw/sequelize-views-support</code>
+</code></pre><p>Or Yarn</p><pre><code><code class="source-code prettyprint">$ yarn add @exoshtw/sequelize-views-support</code>
+</code></pre><h2>Via Git</h2><pre><code><code class="source-code prettyprint">$ git clone https://github.com/exoshtw/sequelize-views-support.git
+$ cd sequelize-views-support
+$ npm install</code>
+</code></pre><h2>Use in your project</h2><p>This package provide a decorator for <code>Sequelize</code> class, you need to use it
+decorated version of the class instead the original:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">import { Sequelize } from &apos;sequelize&apos;;
+import { decorateSequelize } from &apos;@exoshtw/sequelize-views-support&apos;;
+
+const ViewSupporterSequelize = decorateSequelize(Sequelize);
+
+const sequelize = new ViewSupporterSequelize(...);</code>
+</code></pre></div>
+        <a data-ice="link" href="manual/started.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Basics</h1><p>The views support try to be the more transparent and <em>squelize-styled</em> as
+possible.</p><h2>Define new View</h2><p>To create a new View, you need to use a familiar syntax, as a normal Model,
+with the difference that you need to define the <em>select query</em> the view must to
+create.</p><p>There are two ways for it; Using an option called <code>viewQueryOptions</code> or
+override a static method called <code>getQueryOptions</code>.</p><h3>Using config:</h3><p>The easy way is pass the query options by init options, ex:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">class EnabledUser extends View {}
+
+EnabledUser.init({
+  username: DataTypes.STRING,
+  enabled: DataTypes.BOOLEAN,
+}, {
+  sequelize,
+  timestamps: false,
+  viewQueryOptions: {
+    model: User,
+    attributes: [&apos;id&apos;, &apos;username&apos;],
+    where: {
+      enabled: true,
+    },
+  },
+});</code>
+</code></pre><p>Using it we are creating a view using info from model User, using a similar
+syntax to do a <code>findAll</code>. </p><h3>Overriding <code>getQueryOptions</code></h3><p>The other way is overriding the static method <code>getQueryOptions</code>, this gets as
+first param the options of the View (as a model):</p><pre><code class="lang-javascript"><code class="source-code prettyprint">class EnabledUser extends View {
+  static getQueryOptions(options) {
+    return {
+      model: User,
+      attributes: [&apos;id&apos;, &apos;username&apos;],
+      where: {
+        enabled: true,
+      },
+    };
+  }
+}
+
+EnabledUser.init({
+  username: DataTypes.STRING,
+  enabled: DataTypes.BOOLEAN,
+}, {
+  sequelize,
+  timestamps: false,
+});</code>
+</code></pre><h3>Using both</h3><p>You can to override the method using the previous <code>viewQueryOptions</code> option,
+ex:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">class EnabledUser extends View {
+  static getQueryOptions(options) {
+    return {
+      model: User,
+      attributes: [&apos;id&apos;, &apos;username&apos;],
+      ...options.viewQueryOptions,
+    };
+  }
+}
+
+EnabledUser.init({
+  username: DataTypes.STRING,
+  enabled: DataTypes.BOOLEAN,
+}, {
+  sequelize,
+  timestamps: false,
+  viewQueryOptions: {
+    where: { enabled: true },
+  },
+});</code>
+</code></pre><h2>Usage</h2><p>The usage of a defined view is totally similar to use a standar model, using
+the View defined below, we can do:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const result = await EnabledUser.findAll();
+console.log(result.map((user) =&gt; user.toJSON()));</code>
+</code></pre><p>The query options are applicable over the View, for example:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const result = await EnabledUser.findAll({
+  attributes: [&apos;username&apos;],
+  order: [
+    [&apos;username&apos;, &apos;DESC&apos;],
+  ],
+});</code>
+</code></pre><p>All the supported methods by <code>Sequelize.Model</code> are supported, like <code>findOne</code>,
+<code>count</code>, etc.</p></div>
+        <a data-ice="link" href="manual/basic.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Using with associations</h1><p>The <code>viewQueryOptions</code> options support the most features of a sequelize query
+options, including <code>include</code>, the only extra-step we need to do, is indicate to
+the view, where are the information of the included fields.</p><p>For this proppose, there are an option param called <code>fieldsMap</code>, this should to
+be a dictionary like object using the view field as key, and the query field as
+value.</p><h2>Example:</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">// Create User Model
+class User extends Model {};
+
+User.init({
+  username: DataTypes.STRING,
+  birthday: DataTypes.DATE,
+}, { sequelize, modelName: &apos;user&apos; });
+
+// Create Post Model
+class Post extends Model {};
+
+Post.init({
+  title: DataTypes.STRING,
+  content: DataTypes.TEXT,
+}, { sequelize, modelName: &apos;post&apos; });
+
+// Create Post -&gt; User sssociation
+Post.belongsTo(User, {allowNull: false});
+
+// Create View
+class PublicPost extends View {}; 
+
+PublicPost.init({
+  title: DataTypes.STRING,
+  author: DataTypes.STRING,
+  createdAt: DataTypes.DATE,
+}, {
+    sequelize,
+    modelName: &apos;public_posts&apos;,
+    timestamps: false,
+    viewQueryOptions: {
+        model: Post, 
+        attributes: [&apos;id&apos;, &apos;title&apos;, &apos;createdAt&apos;],
+        include: [{
+            model: User,
+            required: true,
+            attributes: [&apos;username&apos;],
+        }],
+        // Map user.username to author
+        fieldsMap: {
+            author: &apos;user.username&apos;,
+        },
+    },
+});
+
+(async () =&gt; {
+  await sequelize.sync();
+
+  const jane = await User.create({
+    username: &apos;janedoe&apos;,
+    birthday: new Date(1980, 6, 20),
+  });
+
+  const robert = await User.create({
+    username: &apos;robert&apos;,
+    birthday: new Date(1987, 1, 25),
+  });
+
+  const post1 = await Post.create({
+    title: &apos;Post 1&apos;,
+    content: &apos;This is the first post&apos;,
+    userId: jane.id,
+  });
+
+  const post2 = await Post.create({
+    title: &apos;Post 2&apos;,
+    content: &apos;This is the second post&apos;,
+    userId: robert.id,
+  });
+
+  const result = await PublicPost.findAll();
+
+  console.log(result.map((post) =&gt; post.toJSON()));
+})();</code>
+</code></pre><p>this example should to return:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">[
+  {
+    id: 1,
+    title: &apos;Post 1&apos;,
+    author: &apos;janedoe&apos;,
+    createdAt: 2022-03-01T01:05:53.411Z
+  },
+  {
+    id: 2,
+    title: &apos;Post 2&apos;,
+    author: &apos;robert&apos;,
+    createdAt: 2022-03-01T01:05:53.414Z
+  }
+]</code>
+</code></pre></div>
+        <a data-ice="link" href="manual/associations.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Using with aggregations fields</h1><p>Views support make easy to work with aggregations fields, beig abble to use it
+as standar fields because this are going to be proccesed by the db engine.</p><p>Using the option param <code>fieldsMap</code>, you can to map a View field to an
+aggregation function.</p><h2>Example using count</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">// Create User Model
+class User extends Model {};
+
+User.init({
+  username: DataTypes.STRING,
+  birthday: DataTypes.DATE,
+}, { sequelize, modelName: &apos;user&apos; });
+
+// Create Post Model
+
+class Post extends Model {};
+
+Post.init({
+  title: DataTypes.STRING,
+  content: DataTypes.TEXT,
+}, { sequelize, modelName: &apos;post&apos; });
+
+// Create Post -&gt; User sssociation
+Post.belongsTo(User, {allowNull: false});
+User.hasMany(Post);
+
+// Create View
+class UserPosts extends View {}; 
+
+UserPosts.init({
+    username: DataTypes.STRING,
+    posts: DataTypes.INTEGER,
+}, {
+    sequelize,
+    modelName: &apos;user_posts&apos;,
+    timestamps: false,
+    viewQueryOptions: {
+        model: User, 
+        attributes: [
+            &apos;id&apos;,
+            &apos;username&apos;,
+            [fn(&apos;count&apos;, &apos;post.id&apos;), &apos;posts&apos;]
+        ],
+        group: [&apos;user.id&apos;],
+        include: [{
+            model: Post,
+            attributes: [],
+        }],
+    },
+});
+
+(async () =&gt; {
+  await sequelize.sync();
+
+  const jane = await User.create({
+    username: &apos;janedoe&apos;,
+    birthday: new Date(1980, 6, 20),
+  });
+
+  const robert = await User.create({
+    username: &apos;robert&apos;,
+    birthday: new Date(1987, 1, 25),
+  });
+
+  const post1 = await Post.create({
+    title: &apos;Post 1&apos;,
+    content: &apos;This is the first post&apos;,
+    userId: jane.id,
+  });
+
+  const post2 = await Post.create({
+    title: &apos;Post 2&apos;,
+    content: &apos;This is the second post&apos;,
+    userId: robert.id,
+  });
+
+  const post3 = await Post.create({
+    title: &apos;Post 3&apos;,
+    content: &apos;This is the third post&apos;,
+    userId: robert.id,
+  });
+
+  const result = await UserPosts.findAll();
+
+  console.log(result.map((user) =&gt; user.toJSON()));
+})();</code>
+</code></pre><p>This should to write out:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">[
+  { id: 1, username: &apos;janedoe&apos;, posts: 1 },
+  { id: 2, username: &apos;robert&apos;, posts: 2 }
+]</code>
+</code></pre><h2>Using where/group/order with aggregated fields</h2><p>The aesy way to make complex operations with aggregators is becouse you treat
+this like standar fields, being abble to do for ex:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const result = UserPost.findAll({
+    attributes: [&apos;username&apos;, &apos;posts&apos;],
+    where: {
+      posts: {
+        [Op.gte]: 10,
+      },
+    },
+    order: [
+      [&apos;posts&apos;, &apos;DESC&apos;],
+    ],
+});</code>
+</code></pre><p>In this case, we are filtering and ordering using the final count of posts, in
+a squelize simple query, this is very complex becaouse we need to group and
+define aggregators in the query. Using views, there are simplest.</p></div>
+        <a data-ice="link" href="manual/aggregations.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Using Views instead of virtual fields</h1><p>Another usage for the Views impplementation must to be the use of pre-calculate
+or aggregated values instead of virtual fields, for querying implementation and
+performance.</p><p>In the sequelize style, we need to create a virtual field and define the <code>get</code>
+property to <em>for example</em> do a concat.</p><p>Using views we are abble to use these fields for querying, filter, order, etc.</p><h2>Example</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">class User extends Model {};
+
+User.init({
+  name: DataTypes.STRING,
+  lastname: DataTypes.STRING,
+}, { sequelize, modelName: &apos;user&apos; });
+
+class FullNameUser extends View {}; 
+
+FullNameUser.init({
+    fullname: DataTypes.STRING,
+}, {
+    sequelize,
+    modelName: &apos;fullname_user&apos;,
+    timestamps: false,
+    viewQueryOptions: {
+        model: User,
+        attributes: [
+            &apos;id&apos;,
+            // Use fn(&apos;concat&apos;, ...) in postgres
+            [literal(`name || &apos; &apos; || lastname `), &apos;fullname&apos;]
+        ],
+    },
+});
+
+(async () =&gt; {
+  await sequelize.sync();
+
+  const jane = await User.create({
+    name: &apos;Jane&apos;,
+    lastname: &apos;Doe&apos;,
+  });
+
+  const robert = await User.create({
+    name: &apos;Robert&apos;,
+    lastname: &apos;Jhonson&apos;,
+  });
+
+  const enableds = await FullNameUser.findAll();
+
+  console.log(enableds.map((user) =&gt; user.toJSON()));
+})();</code>
+</code></pre><p>This should to output:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">[
+  { id: 1, fullname: &apos;Jane Doe&apos; },
+  { id: 2, fullname: &apos;Robert Jhonson&apos; }
+]</code>
+</code></pre><p>Obviuoly, we are limmited to use logic from the dialect and not in Javscript,
+but with the adventage to use it in queries, for ex:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const result = await FullNameUser.findAll({
+  where: {
+    fullname: {
+      [Op.like]: &apos;J% D%&apos;,
+    },
+  },
+});</code>
+</code></pre></div>
+        <a data-ice="link" href="manual/virtuals.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Combine concepts</h1><p>If you read the previous examples, you are aware the power of Views, in this
+example, we are going to combine some concepts like associations and
+aggregations to make something more complex, in this case we are going to
+create a View thats resolve a User balance.</p><p>In this example with have two models:</p><ul>
+<li><strong>User</strong>: The users model getting info from simple users</li>
+<li><strong>Pay</strong>: Pays to user, each register add an amount to a user</li>
+</ul><h2>Example</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">// Create User Model
+class User extends Model {};
+
+User.init({
+  username: DataTypes.STRING,
+  birthday: DataTypes.DATE,
+}, { sequelize, modelName: &apos;user&apos; });
+
+// Create Pays Model 
+
+class Pay extends Model {};
+
+Pay.init({
+  amount: DataTypes.DECIMAL(),
+  observation: DataTypes.STRING,
+}, { sequelize, modelName: &apos;pay&apos; });
+
+// Create Pay -&gt; User sssociation
+Pay.belongsTo(User, {allowNull: false});
+User.hasMany(Pay);
+
+// Create View
+class UserBalance extends View {}; 
+
+UserBalance.init({
+    username: DataTypes.STRING,
+    amount: DataTypes.DECIMAL,
+}, {
+    sequelize,
+    modelName: &apos;user_balance&apos;,
+    timestamps: false,
+    viewQueryOptions: {
+        model: User, 
+        attributes: [
+            &apos;id&apos;,
+            &apos;username&apos;,
+            [fn(&apos;coalesce&apos;, fn(&apos;sum&apos;, col(&apos;pays.amount&apos;)), 0), &apos;amount&apos;]
+        ],
+        group: [&apos;user.id&apos;],
+        include: [{
+            model: Pay,
+            required: false,
+        }],
+    },
+});
+
+(async () =&gt; {
+  await sequelize.sync();
+
+  const jane = await User.create({
+    username: &apos;janedoe&apos;,
+    birthday: new Date(1980, 6, 20),
+  });
+
+  const robert = await User.create({
+    username: &apos;robert&apos;,
+    birthday: new Date(1987, 1, 25),
+  });
+
+  await Pay.create({
+    amount: 100,
+    observation: &apos;Salary&apos;,
+    userId: jane.id,
+  });
+
+  await Pay.create({
+    amount: 50,
+    observation: &apos;Gift&apos;,
+    userId: jane.id,
+  });
+
+  await Pay.create({
+    amount: 0.57,
+    observation: &apos;Interest&apos;,
+    userId: jane.id,
+  });
+
+    const result = await UserBalance.findAll({
+        // Use aggreation functions in order like a sr.
+        order: [[&apos;amount&apos;, &apos;ASC&apos;]],
+    });
+
+  console.log(result.map((user) =&gt; user.toJSON()));
+})();</code>
+</code></pre><p>The output should to be:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">[
+  { id: 2, username: &apos;robert&apos;, amount: 0 },
+  { id: 1, username: &apos;janedoe&apos;, amount: 150.57 }
+] </code>
+</code></pre><h2>Explanation</h2><p>In this case we use an association with <code>Pay</code> model, and an aggregation
+function to <code>sum</code> the amounts, getting a reduced balance from user, in this
+case don&apos;t map fields becouse the <code>amount</code> field is declared in the main Model,
+this View can be used for obtain single registers without use aggregations:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const janedoeBalance = await UserBalance.findOne({
+  attributes: [&apos;amount&apos;],
+  where: {id: 1},
+  raw: true,
+})
+  .then((result) =&gt; result.amount)
+;</code>
+</code></pre></div>
+        <a data-ice="link" href="manual/combine.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Polymorphism using Views</h1><p>One of pilars of the object oriented programming is the polymorphism, but this
+paradigm is very hard to apply in relational databases, and this complexity is
+increased in the ORM layer.</p><p>Sequelie <a href="https://sequelize.org/v6/manual/polymorphic-associations.html">have an
+example</a> using
+the <code>beforeFind</code> hook and scopes.</p><p>There we explore an alternative using Views, with the adventage of the
+transparent usage in queries.</p><h2>Stage</h2><p>In this stage with have and entity called <code>Vehicle</code>, with a serie of common
+vehicles attributes, as the price or the name, and a attribute called <code>type</code>
+that define who type of <em>vehicle</em> is, the rest of properties are in two
+separate models: <code>Car</code> and <code>Bike</code>, this referers to the <code>Vehicle</code> model with an
+one to one relation.</p><h2>Propouse</h2><p>We propose to create two abstract class, <code>VehicleChild</code> extending of <code>Model</code>,
+and <code>VehicleChildView</code> extending of <code>View</code>.</p><h2>Implement</h2><h3>Create parent model</h3><p>First, we are going the Parent entity model:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">// Create Vehicle Model
+class Vehicle extends Model {};
+
+Vehicle.init({
+  type: DataTypes.ENUM(&apos;car&apos;, &apos;bike&apos;),
+  name: DataTypes.STRING,
+  price: DataTypes.DECIMAL,
+}, { sequelize, modelName: &apos;vehicle&apos; });</code>
+</code></pre><p>This has the type of vehicle and the common information.</p><h3>Create child abstract</h3><p>Next, we are going to code a abstract class for use by the childs of <code>Vehicle</code>:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">// Create Child Model Abstract
+class VehicleChildren extends Model {
+  // Override init for add id field
+  static init(fields, options = {}) {
+    super.init({
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: false,
+      },
+      ...fields,
+    }, {
+      timestamps: false,
+      ...options,
+    });
+  }
+
+  static associate(models) {
+    Vehicle.hasOne(this, {
+        foreignKey: &apos;id&apos;,
+        sourceKey: &apos;id&apos;,
+        constraints: true,
+    });
+  }
+};</code>
+</code></pre><p>In this case, we are overriding the method <code>init</code>, to add an id field, in this
+case, it&apos;s neccesary the child id was the same of the parent model, for this
+reason set <code>autoIncrement</code> in false.</p><p>By other hand, set <code>timestamps</code> in false becouse the creation time is in the
+parent model. By practical propouses we will not to worry for the <code>updatedAt</code>
+field.</p><p>In the associate method, we are associating own child model with the parent.</p><h3>Create child models</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">// Create Car Model
+class Car extends VehicleChildren {};
+
+Car.init({
+    transmission: DataTypes.ENUM(&apos;automatic&apos;, &apos;manual&apos;),
+    doors: DataTypes.INTEGER,
+    style: DataTypes.ENUM(&apos;sedan&apos;, &apos;coupe&apos;, &apos;convertible&apos;),
+    hp: DataTypes.INTEGER,
+}, { sequelize, modelName: &apos;car&apos;});
+
+// Create Bike Model
+class Bike extends VehicleChildren {};
+
+Bike.init({
+    style: DataTypes.ENUM(&apos;road&apos;, &apos;mountain&apos;, &apos;hybrid&apos;),
+    cicles: DataTypes.INTEGER,
+    cc: DataTypes.INTEGER,
+}, { sequelize, modelName: &apos;bike&apos;});
+
+// Create associations 
+Car.associate();
+Bike.associate();</code>
+</code></pre><p>We extends the <code>VehicleChildren</code> and define a serie of own properties for each
+vehicle type.</p><h3>Create the abstract View</h3><p>For DRY, we have to create an abstract View overriding some methods:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">// Create View Base
+class VehicleChildView extends View {
+
+    // Override getQueryOptions using props
+    static getQueryOptions(options) {
+        return {
+            model: Vehicle, 
+            include: [{
+                model: this.model,
+                required: true,
+            }],
+            where: {
+                type: this.type,
+            },
+            ...(options.viewQueryOptions || {}),
+        };
+    }
+
+    static init(fields, options = {}) {
+
+        const extraFields = Object.keys(fields).reduce((acc, key) =&gt; {
+            acc[key] = `${this.type}.${key}`;
+            return acc;
+        }, {});
+
+        const {viewQueryOptions}  = options;
+
+        super.init({
+            name: DataTypes.STRING,
+            price: DataTypes.DECIMAL,
+            ...fields,
+        }, {
+            ...options,
+            viewQueryOptions: {
+                fieldsMap: {
+                    ...extraFields,
+                    ...(viewQueryOptions || {}),
+                },
+                ...(viewQueryOptions &amp;&amp; options.viewQueryOptions || {}),
+            }, }); }
+
+    // Override create 
+    static async create(data, options = {}) {
+        return sequelize.transaction(async (transaction) =&gt; {
+            const {
+                name,
+                price,
+                ...extra
+            } = data;
+
+            const vehicle = await Vehicle.create({
+                type: this.type,
+                name,
+                price,
+            }, { transaction });
+
+            const child = await this.model.create({
+                id: vehicle.id,
+                ...extra,
+            }, { transaction });
+
+            return this.build({
+                ...vehicle.get({plane: true}),
+                ...child.get({plane: true}),
+            });
+        });
+    }
+};</code>
+</code></pre><p>In this case we are using the method <code>getQueryOptions</code> to define the View
+query, equal for all childrens. We expect two static properties in the
+definition of a <code>VehicleChildView</code>; <code>type</code> and <code>model</code>, this properties are
+used for abstract View to create the query options, the relation and to be used
+in the overrided logic of <code>create</code> method, in this case we are overriting
+<code>create</code> to desmotrate a use of a View like some kind of serializer.</p><p>We are auto-mapping the own-properties too.</p><h2>Create the child views</h2><p>With the code abstracted bellow, the definition of new Views that represent
+a child of <code>Vehicle</code>, must to be simple:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">// Create Car View
+class VehicleCar extends VehicleChildView {
+    static type = &apos;car&apos;;
+    static model = Car;
+};
+
+VehicleCar.init({
+    transmission: DataTypes.STRING,
+    doors: DataTypes.INTEGER,
+    style: DataTypes.STRING,
+    hp: DataTypes.INTEGER,
+}, {
+    sequelize,
+});
+
+// Create Bike View
+class VehicleBike extends VehicleChildView {
+    static type = &apos;bike&apos;;
+    static model = Bike;
+};
+
+VehicleBike.init({
+    style: DataTypes.STRING,
+    cicles: DataTypes.INTEGER,
+    cc: DataTypes.INTEGER,
+}, {
+    sequelize,
+});</code>
+</code></pre><p>Only extending the class <code>VehicleChildView</code> and creating the properties
+<code>type</code>and <code>model</code>, the rest of the logic runs over the abstract View.</p><h2>Usage</h2><p>The usage is very simple, we treat the final views like models with the full
+information of entitiy (parent and child attributes):</p><pre><code class="lang-javascript"><code class="source-code prettyprint">(async () =&gt; {
+  await sequelize.sync();
+
+  const car = await VehicleCar.create({
+    name: &apos;Audi&apos;,
+    price: 100000,
+    transmission: &apos;automatic&apos;,
+    doors: 4,
+    style: &apos;sedan&apos;,
+    hp: 200,
+  });
+
+  const bike = await VehicleBike.create({
+    name: &apos;BMX&apos;,
+    price: 10000,
+    style: &apos;road&apos;,
+    cicles: 100,
+    cc: 100,
+  });
+
+  const cars = await VehicleCar.findAll();
+  console.log(cars.map((car) =&gt; car.toJSON()));
+
+  const bikes = await VehicleBike.findAll();
+  console.log(bikes.map((bike) =&gt; bike.toJSON()));
+})();</code>
+</code></pre><p>The result should to output:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">[
+  {
+    id: 1,
+    name: &apos;Audi&apos;,
+    price: 100000,
+    transmission: &apos;automatic&apos;,
+    doors: 4,
+    style: &apos;sedan&apos;,
+    hp: 200,
+    createdAt: 2022-03-01T03:58:18.941Z,
+    updatedAt: 2022-03-01T03:58:18.941Z
+  }
+]
+[
+  {
+    id: 2,
+    name: &apos;BMX&apos;,
+    price: 10000,
+    style: &apos;road&apos;,
+    cicles: 100,
+    cc: 100,
+    createdAt: 2022-03-01T03:58:18.962Z,
+    updatedAt: 2022-03-01T03:58:18.962Z
+  }
+]</code>
+</code></pre></div>
+        <a data-ice="link" href="manual/polymorphism.html"></a>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual | Sequelize</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<link rel="stylesheet" href="./inject/css/0-style.css"><link rel="stylesheet" href="./inject/css/0-theme.css"><meta name="description" content="An easy-to-use multi SQL dialect ORM for Node.js"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Sequelize"><meta property="twitter:description" content="An easy-to-use multi SQL dialect ORM for Node.js"></head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/sequelize/sequelize"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/started.html"><a href="manual/started.html" data-ice="link">Install</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#via-package-manager" data-ice="link">Via package manager</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#via-git" data-ice="link">Via Git</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#use-in-your-project" data-ice="link">Use in your project</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/basic.html"><a href="manual/basic.html" data-ice="link">Basics</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/basic.html"><a href="manual/basic.html#define-new-view" data-ice="link">Define new View</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#using-config-" data-ice="link">Using config:</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#overriding--code-getqueryoptions--code-" data-ice="link">Overriding getQueryOptions</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#using-both" data-ice="link">Using both</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/basic.html"><a href="manual/basic.html#usage" data-ice="link">Usage</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/associations.html"><a href="manual/associations.html" data-ice="link">Using with associations</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/associations.html"><a href="manual/associations.html#example-" data-ice="link">Example:</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/aggregations.html"><a href="manual/aggregations.html" data-ice="link">Using with aggregations fields</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/aggregations.html"><a href="manual/aggregations.html#example-using-count" data-ice="link">Example using count</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/aggregations.html"><a href="manual/aggregations.html#using-where-group-order-with-aggregated-fields" data-ice="link">Using where/group/order with aggregated fields</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/virtuals.html"><a href="manual/virtuals.html" data-ice="link">Using Views instead of virtual fields</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/virtuals.html"><a href="manual/virtuals.html#example" data-ice="link">Example</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/combine.html"><a href="manual/combine.html" data-ice="link">Combine concepts</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/combine.html"><a href="manual/combine.html#example" data-ice="link">Example</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/combine.html"><a href="manual/combine.html#explanation" data-ice="link">Explanation</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html" data-ice="link">Polymorphism using Views</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#stage" data-ice="link">Stage</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#propouse" data-ice="link">Propouse</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#implement" data-ice="link">Implement</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-parent-model" data-ice="link">Create parent model</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-child-abstract" data-ice="link">Create child abstract</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-child-models" data-ice="link">Create child models</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-the-abstract-view" data-ice="link">Create the abstract View</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-the-child-views" data-ice="link">Create the child views</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#usage" data-ice="link">Usage</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="combine-concepts">Combine concepts</h1><p>If you read the previous examples, you are aware the power of Views, in this
+example, we are going to combine some concepts like associations and
+aggregations to make something more complex, in this case we are going to
+create a View thats resolve a User balance.</p>
+<p>In this example with have two models:</p>
+<ul>
+<li><strong>User</strong>: The users model getting info from simple users</li>
+<li><strong>Pay</strong>: Pays to user, each register add an amount to a user</li>
+</ul>
+<h2 id="example">Example</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">// Create User Model
+class User extends Model {};
+
+User.init({
+  username: DataTypes.STRING,
+  birthday: DataTypes.DATE,
+}, { sequelize, modelName: &apos;user&apos; });
+
+// Create Pays Model 
+
+class Pay extends Model {};
+
+Pay.init({
+  amount: DataTypes.DECIMAL(),
+  observation: DataTypes.STRING,
+}, { sequelize, modelName: &apos;pay&apos; });
+
+// Create Pay -&gt; User sssociation
+Pay.belongsTo(User, {allowNull: false});
+User.hasMany(Pay);
+
+// Create View
+class UserBalance extends View {}; 
+
+UserBalance.init({
+    username: DataTypes.STRING,
+    amount: DataTypes.DECIMAL,
+}, {
+    sequelize,
+    modelName: &apos;user_balance&apos;,
+    timestamps: false,
+    viewQueryOptions: {
+        model: User, 
+        attributes: [
+            &apos;id&apos;,
+            &apos;username&apos;,
+            [fn(&apos;coalesce&apos;, fn(&apos;sum&apos;, col(&apos;pays.amount&apos;)), 0), &apos;amount&apos;]
+        ],
+        group: [&apos;user.id&apos;],
+        include: [{
+            model: Pay,
+            required: false,
+        }],
+    },
+});
+
+(async () =&gt; {
+  await sequelize.sync();
+
+  const jane = await User.create({
+    username: &apos;janedoe&apos;,
+    birthday: new Date(1980, 6, 20),
+  });
+
+  const robert = await User.create({
+    username: &apos;robert&apos;,
+    birthday: new Date(1987, 1, 25),
+  });
+
+  await Pay.create({
+    amount: 100,
+    observation: &apos;Salary&apos;,
+    userId: jane.id,
+  });
+
+  await Pay.create({
+    amount: 50,
+    observation: &apos;Gift&apos;,
+    userId: jane.id,
+  });
+
+  await Pay.create({
+    amount: 0.57,
+    observation: &apos;Interest&apos;,
+    userId: jane.id,
+  });
+
+    const result = await UserBalance.findAll({
+        // Use aggreation functions in order like a sr.
+        order: [[&apos;amount&apos;, &apos;ASC&apos;]],
+    });
+
+  console.log(result.map((user) =&gt; user.toJSON()));
+})();</code>
+</code></pre>
+<p>The output should to be:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">[
+  { id: 2, username: &apos;robert&apos;, amount: 0 },
+  { id: 1, username: &apos;janedoe&apos;, amount: 150.57 }
+] </code>
+</code></pre>
+<h2 id="explanation">Explanation</h2><p>In this case we use an association with <code>Pay</code> model, and an aggregation
+function to <code>sum</code> the amounts, getting a reduced balance from user, in this
+case don&apos;t map fields becouse the <code>amount</code> field is declared in the main Model,
+this View can be used for obtain single registers without use aggregations:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const janedoeBalance = await UserBalance.findOne({
+  attributes: [&apos;amount&apos;],
+  where: {id: 1},
+  raw: true,
+})
+  .then((result) =&gt; result.amount)
+;</code>
+</code></pre>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

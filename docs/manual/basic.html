@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual | Sequelize</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<link rel="stylesheet" href="./inject/css/0-style.css"><link rel="stylesheet" href="./inject/css/0-theme.css"><meta name="description" content="An easy-to-use multi SQL dialect ORM for Node.js"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Sequelize"><meta property="twitter:description" content="An easy-to-use multi SQL dialect ORM for Node.js"></head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/sequelize/sequelize"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/started.html"><a href="manual/started.html" data-ice="link">Install</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#via-package-manager" data-ice="link">Via package manager</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#via-git" data-ice="link">Via Git</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#use-in-your-project" data-ice="link">Use in your project</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/basic.html"><a href="manual/basic.html" data-ice="link">Basics</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/basic.html"><a href="manual/basic.html#define-new-view" data-ice="link">Define new View</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#using-config-" data-ice="link">Using config:</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#overriding--code-getqueryoptions--code-" data-ice="link">Overriding getQueryOptions</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#using-both" data-ice="link">Using both</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/basic.html"><a href="manual/basic.html#usage" data-ice="link">Usage</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/associations.html"><a href="manual/associations.html" data-ice="link">Using with associations</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/associations.html"><a href="manual/associations.html#example-" data-ice="link">Example:</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/aggregations.html"><a href="manual/aggregations.html" data-ice="link">Using with aggregations fields</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/aggregations.html"><a href="manual/aggregations.html#example-using-count" data-ice="link">Example using count</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/aggregations.html"><a href="manual/aggregations.html#using-where-group-order-with-aggregated-fields" data-ice="link">Using where/group/order with aggregated fields</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/virtuals.html"><a href="manual/virtuals.html" data-ice="link">Using Views instead of virtual fields</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/virtuals.html"><a href="manual/virtuals.html#example" data-ice="link">Example</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/combine.html"><a href="manual/combine.html" data-ice="link">Combine concepts</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/combine.html"><a href="manual/combine.html#example" data-ice="link">Example</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/combine.html"><a href="manual/combine.html#explanation" data-ice="link">Explanation</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html" data-ice="link">Polymorphism using Views</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#stage" data-ice="link">Stage</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#propouse" data-ice="link">Propouse</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#implement" data-ice="link">Implement</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-parent-model" data-ice="link">Create parent model</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-child-abstract" data-ice="link">Create child abstract</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-child-models" data-ice="link">Create child models</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-the-abstract-view" data-ice="link">Create the abstract View</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-the-child-views" data-ice="link">Create the child views</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#usage" data-ice="link">Usage</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="basics">Basics</h1><p>The views support try to be the more transparent and <em>squelize-styled</em> as
+possible.</p>
+<h2 id="define-new-view">Define new View</h2><p>To create a new View, you need to use a familiar syntax, as a normal Model,
+with the difference that you need to define the <em>select query</em> the view must to
+create.</p>
+<p>There are two ways for it; Using an option called <code>viewQueryOptions</code> or
+override a static method called <code>getQueryOptions</code>.</p>
+<h3 id="using-config-">Using config:</h3><p>The easy way is pass the query options by init options, ex:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">class EnabledUser extends View {}
+
+EnabledUser.init({
+  username: DataTypes.STRING,
+  enabled: DataTypes.BOOLEAN,
+}, {
+  sequelize,
+  timestamps: false,
+  viewQueryOptions: {
+    model: User,
+    attributes: [&apos;id&apos;, &apos;username&apos;],
+    where: {
+      enabled: true,
+    },
+  },
+});</code>
+</code></pre>
+<p>Using it we are creating a view using info from model User, using a similar
+syntax to do a <code>findAll</code>. </p>
+<h3 id="overriding--code-getqueryoptions--code-">Overriding <code>getQueryOptions</code></h3><p>The other way is overriding the static method <code>getQueryOptions</code>, this gets as
+first param the options of the View (as a model):</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">class EnabledUser extends View {
+  static getQueryOptions(options) {
+    return {
+      model: User,
+      attributes: [&apos;id&apos;, &apos;username&apos;],
+      where: {
+        enabled: true,
+      },
+    };
+  }
+}
+
+EnabledUser.init({
+  username: DataTypes.STRING,
+  enabled: DataTypes.BOOLEAN,
+}, {
+  sequelize,
+  timestamps: false,
+});</code>
+</code></pre>
+<h3 id="using-both">Using both</h3><p>You can to override the method using the previous <code>viewQueryOptions</code> option,
+ex:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">class EnabledUser extends View {
+  static getQueryOptions(options) {
+    return {
+      model: User,
+      attributes: [&apos;id&apos;, &apos;username&apos;],
+      ...options.viewQueryOptions,
+    };
+  }
+}
+
+EnabledUser.init({
+  username: DataTypes.STRING,
+  enabled: DataTypes.BOOLEAN,
+}, {
+  sequelize,
+  timestamps: false,
+  viewQueryOptions: {
+    where: { enabled: true },
+  },
+});</code>
+</code></pre>
+<h2 id="usage">Usage</h2><p>The usage of a defined view is totally similar to use a standar model, using
+the View defined below, we can do:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const result = await EnabledUser.findAll();
+console.log(result.map((user) =&gt; user.toJSON()));</code>
+</code></pre>
+<p>The query options are applicable over the View, for example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const result = await EnabledUser.findAll({
+  attributes: [&apos;username&apos;],
+  order: [
+    [&apos;username&apos;, &apos;DESC&apos;],
+  ],
+});</code>
+</code></pre>
+<p>All the supported methods by <code>Sequelize.Model</code> are supported, like <code>findOne</code>,
+<code>count</code>, etc.</p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

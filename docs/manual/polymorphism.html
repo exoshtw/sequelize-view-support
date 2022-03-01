@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual | Sequelize</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<link rel="stylesheet" href="./inject/css/0-style.css"><link rel="stylesheet" href="./inject/css/0-theme.css"><meta name="description" content="An easy-to-use multi SQL dialect ORM for Node.js"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Sequelize"><meta property="twitter:description" content="An easy-to-use multi SQL dialect ORM for Node.js"></head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/sequelize/sequelize"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/started.html"><a href="manual/started.html" data-ice="link">Install</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#via-package-manager" data-ice="link">Via package manager</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#via-git" data-ice="link">Via Git</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/started.html"><a href="manual/started.html#use-in-your-project" data-ice="link">Use in your project</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/basic.html"><a href="manual/basic.html" data-ice="link">Basics</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/basic.html"><a href="manual/basic.html#define-new-view" data-ice="link">Define new View</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#using-config-" data-ice="link">Using config:</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#overriding--code-getqueryoptions--code-" data-ice="link">Overriding getQueryOptions</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/basic.html"><a href="manual/basic.html#using-both" data-ice="link">Using both</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/basic.html"><a href="manual/basic.html#usage" data-ice="link">Usage</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/associations.html"><a href="manual/associations.html" data-ice="link">Using with associations</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/associations.html"><a href="manual/associations.html#example-" data-ice="link">Example:</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/aggregations.html"><a href="manual/aggregations.html" data-ice="link">Using with aggregations fields</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/aggregations.html"><a href="manual/aggregations.html#example-using-count" data-ice="link">Example using count</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/aggregations.html"><a href="manual/aggregations.html#using-where-group-order-with-aggregated-fields" data-ice="link">Using where/group/order with aggregated fields</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/virtuals.html"><a href="manual/virtuals.html" data-ice="link">Using Views instead of virtual fields</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/virtuals.html"><a href="manual/virtuals.html#example" data-ice="link">Example</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/combine.html"><a href="manual/combine.html" data-ice="link">Combine concepts</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/combine.html"><a href="manual/combine.html#example" data-ice="link">Example</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/combine.html"><a href="manual/combine.html#explanation" data-ice="link">Explanation</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html" data-ice="link">Polymorphism using Views</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#stage" data-ice="link">Stage</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#propouse" data-ice="link">Propouse</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#implement" data-ice="link">Implement</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-parent-model" data-ice="link">Create parent model</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-child-abstract" data-ice="link">Create child abstract</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-child-models" data-ice="link">Create child models</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-the-abstract-view" data-ice="link">Create the abstract View</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#create-the-child-views" data-ice="link">Create the child views</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/polymorphism.html"><a href="manual/polymorphism.html#usage" data-ice="link">Usage</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="polymorphism-using-views">Polymorphism using Views</h1><p>One of pilars of the object oriented programming is the polymorphism, but this
+paradigm is very hard to apply in relational databases, and this complexity is
+increased in the ORM layer.</p>
+<p>Sequelie <a href="https://sequelize.org/v6/manual/polymorphic-associations.html">have an
+example</a> using
+the <code>beforeFind</code> hook and scopes.</p>
+<p>There we explore an alternative using Views, with the adventage of the
+transparent usage in queries.</p>
+<h2 id="stage">Stage</h2><p>In this stage with have and entity called <code>Vehicle</code>, with a serie of common
+vehicles attributes, as the price or the name, and a attribute called <code>type</code>
+that define who type of <em>vehicle</em> is, the rest of properties are in two
+separate models: <code>Car</code> and <code>Bike</code>, this referers to the <code>Vehicle</code> model with an
+one to one relation.</p>
+<h2 id="propouse">Propouse</h2><p>We propose to create two abstract class, <code>VehicleChild</code> extending of <code>Model</code>,
+and <code>VehicleChildView</code> extending of <code>View</code>.</p>
+<h2 id="implement">Implement</h2><h3 id="create-parent-model">Create parent model</h3><p>First, we are going the Parent entity model:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">// Create Vehicle Model
+class Vehicle extends Model {};
+
+Vehicle.init({
+  type: DataTypes.ENUM(&apos;car&apos;, &apos;bike&apos;),
+  name: DataTypes.STRING,
+  price: DataTypes.DECIMAL,
+}, { sequelize, modelName: &apos;vehicle&apos; });</code>
+</code></pre>
+<p>This has the type of vehicle and the common information.</p>
+<h3 id="create-child-abstract">Create child abstract</h3><p>Next, we are going to code a abstract class for use by the childs of <code>Vehicle</code>:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">// Create Child Model Abstract
+class VehicleChildren extends Model {
+  // Override init for add id field
+  static init(fields, options = {}) {
+    super.init({
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: false,
+      },
+      ...fields,
+    }, {
+      timestamps: false,
+      ...options,
+    });
+  }
+
+  static associate(models) {
+    Vehicle.hasOne(this, {
+        foreignKey: &apos;id&apos;,
+        sourceKey: &apos;id&apos;,
+        constraints: true,
+    });
+  }
+};</code>
+</code></pre>
+<p>In this case, we are overriding the method <code>init</code>, to add an id field, in this
+case, it&apos;s neccesary the child id was the same of the parent model, for this
+reason set <code>autoIncrement</code> in false.</p>
+<p>By other hand, set <code>timestamps</code> in false becouse the creation time is in the
+parent model. By practical propouses we will not to worry for the <code>updatedAt</code>
+field.</p>
+<p>In the associate method, we are associating own child model with the parent.</p>
+<h3 id="create-child-models">Create child models</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">// Create Car Model
+class Car extends VehicleChildren {};
+
+Car.init({
+    transmission: DataTypes.ENUM(&apos;automatic&apos;, &apos;manual&apos;),
+    doors: DataTypes.INTEGER,
+    style: DataTypes.ENUM(&apos;sedan&apos;, &apos;coupe&apos;, &apos;convertible&apos;),
+    hp: DataTypes.INTEGER,
+}, { sequelize, modelName: &apos;car&apos;});
+
+// Create Bike Model
+class Bike extends VehicleChildren {};
+
+Bike.init({
+    style: DataTypes.ENUM(&apos;road&apos;, &apos;mountain&apos;, &apos;hybrid&apos;),
+    cicles: DataTypes.INTEGER,
+    cc: DataTypes.INTEGER,
+}, { sequelize, modelName: &apos;bike&apos;});
+
+// Create associations 
+Car.associate();
+Bike.associate();</code>
+</code></pre>
+<p>We extends the <code>VehicleChildren</code> and define a serie of own properties for each
+vehicle type.</p>
+<h3 id="create-the-abstract-view">Create the abstract View</h3><p>For DRY, we have to create an abstract View overriding some methods:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">// Create View Base
+class VehicleChildView extends View {
+
+    // Override getQueryOptions using props
+    static getQueryOptions(options) {
+        return {
+            model: Vehicle, 
+            include: [{
+                model: this.model,
+                required: true,
+            }],
+            where: {
+                type: this.type,
+            },
+            ...(options.viewQueryOptions || {}),
+        };
+    }
+
+    static init(fields, options = {}) {
+
+        const extraFields = Object.keys(fields).reduce((acc, key) =&gt; {
+            acc[key] = `${this.type}.${key}`;
+            return acc;
+        }, {});
+
+        const {viewQueryOptions}  = options;
+
+        super.init({
+            name: DataTypes.STRING,
+            price: DataTypes.DECIMAL,
+            ...fields,
+        }, {
+            ...options,
+            viewQueryOptions: {
+                fieldsMap: {
+                    ...extraFields,
+                    ...(viewQueryOptions || {}),
+                },
+                ...(viewQueryOptions &amp;&amp; options.viewQueryOptions || {}),
+            }, }); }
+
+    // Override create 
+    static async create(data, options = {}) {
+        return sequelize.transaction(async (transaction) =&gt; {
+            const {
+                name,
+                price,
+                ...extra
+            } = data;
+
+            const vehicle = await Vehicle.create({
+                type: this.type,
+                name,
+                price,
+            }, { transaction });
+
+            const child = await this.model.create({
+                id: vehicle.id,
+                ...extra,
+            }, { transaction });
+
+            return this.build({
+                ...vehicle.get({plane: true}),
+                ...child.get({plane: true}),
+            });
+        });
+    }
+};</code>
+</code></pre>
+<p>In this case we are using the method <code>getQueryOptions</code> to define the View
+query, equal for all childrens. We expect two static properties in the
+definition of a <code>VehicleChildView</code>; <code>type</code> and <code>model</code>, this properties are
+used for abstract View to create the query options, the relation and to be used
+in the overrided logic of <code>create</code> method, in this case we are overriting
+<code>create</code> to desmotrate a use of a View like some kind of serializer.</p>
+<p>We are auto-mapping the own-properties too.</p>
+<h2 id="create-the-child-views">Create the child views</h2><p>With the code abstracted bellow, the definition of new Views that represent
+a child of <code>Vehicle</code>, must to be simple:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">// Create Car View
+class VehicleCar extends VehicleChildView {
+    static type = &apos;car&apos;;
+    static model = Car;
+};
+
+VehicleCar.init({
+    transmission: DataTypes.STRING,
+    doors: DataTypes.INTEGER,
+    style: DataTypes.STRING,
+    hp: DataTypes.INTEGER,
+}, {
+    sequelize,
+});
+
+// Create Bike View
+class VehicleBike extends VehicleChildView {
+    static type = &apos;bike&apos;;
+    static model = Bike;
+};
+
+VehicleBike.init({
+    style: DataTypes.STRING,
+    cicles: DataTypes.INTEGER,
+    cc: DataTypes.INTEGER,
+}, {
+    sequelize,
+});</code>
+</code></pre>
+<p>Only extending the class <code>VehicleChildView</code> and creating the properties
+<code>type</code>and <code>model</code>, the rest of the logic runs over the abstract View.</p>
+<h2 id="usage">Usage</h2><p>The usage is very simple, we treat the final views like models with the full
+information of entitiy (parent and child attributes):</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">(async () =&gt; {
+  await sequelize.sync();
+
+  const car = await VehicleCar.create({
+    name: &apos;Audi&apos;,
+    price: 100000,
+    transmission: &apos;automatic&apos;,
+    doors: 4,
+    style: &apos;sedan&apos;,
+    hp: 200,
+  });
+
+  const bike = await VehicleBike.create({
+    name: &apos;BMX&apos;,
+    price: 10000,
+    style: &apos;road&apos;,
+    cicles: 100,
+    cc: 100,
+  });
+
+  const cars = await VehicleCar.findAll();
+  console.log(cars.map((car) =&gt; car.toJSON()));
+
+  const bikes = await VehicleBike.findAll();
+  console.log(bikes.map((bike) =&gt; bike.toJSON()));
+})();</code>
+</code></pre>
+<p>The result should to output:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">[
+  {
+    id: 1,
+    name: &apos;Audi&apos;,
+    price: 100000,
+    transmission: &apos;automatic&apos;,
+    doors: 4,
+    style: &apos;sedan&apos;,
+    hp: 200,
+    createdAt: 2022-03-01T03:58:18.941Z,
+    updatedAt: 2022-03-01T03:58:18.941Z
+  }
+]
+[
+  {
+    id: 2,
+    name: &apos;BMX&apos;,
+    price: 10000,
+    style: &apos;road&apos;,
+    cicles: 100,
+    cc: 100,
+    createdAt: 2022-03-01T03:58:18.962Z,
+    updatedAt: 2022-03-01T03:58:18.962Z
+  }
+]</code>
+</code></pre>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
