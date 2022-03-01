@@ -17,4 +17,4 @@ Or yanr:
 
 ## Documentation 📋
 
-@TODO
+* [Documentation](https://exoshtw.github.io/sequelize-view-support)

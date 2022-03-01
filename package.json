@@ -24,6 +24,7 @@
     "type": "git",
     "url": "https://github.com/exoshtw/sequelize-views-support.git"
   },
+  "homepage": "https://exoshtw.github.io/sequelize-view-support/",
   "dependencies": {
     "debug": "^4.3.3"
   },
